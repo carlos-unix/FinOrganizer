@@ -33,5 +33,5 @@ These information are available also in PT-BR on the `escopo_bd.txt` file.
 
 ## Screenshots
 
-![Login page](https://raw.githubusercontent.com/503brain/finorganizer/main/assets/login.png "Login page")
-![Main screen](https://raw.githubusercontent.com/503brain/finorganizer/main/assets/main-screen.png "Main screen")
+![Login page](https://github.com/carlos-unix/FinOrganizer/blob/main/assets/login.png "Login page")
+![Main screen](https://github.com/carlos-unix/FinOrganizer/blob/main/assets/main-screen.png "Main screen")
