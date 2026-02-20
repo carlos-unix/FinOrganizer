@@ -1,37 +1,49 @@
 # FinOrganizer
 
-This program is a web-based system for personal finance control. It allows adding incomes and expenses and also see the graphic relationship between both. The main page is on `index.html`, but the program also allows using `index.php` to login. 
+FinOrganizer is a web-based personal finance management system that allows users to track incomes, expenses and balance through an intuitive interface and graphical reports.
 
-## How to use
+This project demonstrates full-stack development skills using PHP, MySQL and Bootstrap.
 
-Firstly you have to activate the _localhost_ conection by installing PHP and creating the MySQL database using the script on `finorganizer.sql`. After that use your credentials of the database to access the system, filling the `conectar_banco.php` file. That's enough for using the program. Remember: you have to have PHP and MySQL installed on your computer. XAMPP is not required exclusively.
 
-Download PHP [here](https://www.php.net/downloads.php). 
-
-Download MySQL [here](https://dev.mysql.com/downloads/).
-
-If you're using Visual Studio Code to access this project, use the command `php -S localhost:xxx` (xxx is the port) on the specific folder and type `localhost` on your browser search bar.
-
-## Technologies used 
-
-PHP, MySQL, HTML, CSS and JavaScript.
 
 ## Features
 
-* Modules: balance, incomes and expenses
-* Incomes entry
-* Expenses entry
-* Incomes listing
-* Expenses listing
-* Balance view
-* Edit incomes entries
-* Edit expenses entries
-* Delete incomes entries
-* Delete expenses entries
+• User authentication  
+• Income and expense tracking  
+• Edit and delete financial records  
+• Balance calculation  
+• Graphical reports of incomes vs expenses  
 
-These information are available also in PT-BR on the `escopo_bd.txt` file.
+
+## Tech Stack
+
+Backend: PHP  
+Frontend: HTML, CSS, JavaScript, Bootstrap  
+Database: MySQL  
+
 
 ## Screenshots
 
-![Login page](https://raw.githubusercontent.com/503brain/finorganizer/main/assets/login.png "Login page")
-![Main screen](https://raw.githubusercontent.com/503brain/finorganizer/main/assets/main-screen.png "Main screen")
+![Login page](https://raw.githubusercontent.com/carlos-unix/FinOrganizer/main/assets/login.png)
+![Main screen](https://raw.githubusercontent.com/carlos-unix/FinOrganizer/main/assets/main-screen.png)
+
+
+## Installation
+
+1. Install PHP and MySQL.
+2. Import the database using `finorganizer.sql`.
+3. Configure database credentials in `conectar_banco.php`.
+4. Run the project:
+
+
+Open `localhost:8000` in your browser.
+
+
+## Purpose of this Project
+
+This project was created to practice:
+
+• Full-stack web development  
+• Authentication systems  
+• CRUD operations with MySQL  
+• Financial data visualization 
