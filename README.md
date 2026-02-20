@@ -46,4 +46,4 @@ This project was created to practice:
 • Full-stack web development  
 • Authentication systems  
 • CRUD operations with MySQL  
-• Financial data visualization 
+• Financial data visualization
