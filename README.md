@@ -36,14 +36,4 @@ Database: MySQL
 4. Run the project:
 
 
-Open `localhost:8000` in your browser.
-
-
-## Purpose of this Project
-
-This project was created to practice:
-
-• Full-stack web development  
-• Authentication systems  
-• CRUD operations with MySQL  
-• Financial data visualization
+Open `localhost:8000` in your browser and the system is already usable.
