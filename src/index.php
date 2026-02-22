@@ -1,94 +1,70 @@
-<?php
-session_start();
-
-require_once 'conectar_banco.php';
-
-$erro = '';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
-    if (empty($_POST['user']) || empty($_POST['pass'])) {
-        $erro = 'Por favor, preencha todos os campos';
-    } else {
-        $usuario = trim($_POST['user']);
-        $senha = $_POST['pass'];
-        
-        $query = "SELECT id, usuario, senha FROM login WHERE usuario = ?";
-        $stmt = mysqli_prepare($connection, $query);
-        
-        if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "s", $usuario);
-            mysqli_stmt_execute($stmt);
-            $resultado = mysqli_stmt_get_result($stmt);
-            
-            if (mysqli_num_rows($resultado) === 1) {
-                $dados_usuario = mysqli_fetch_assoc($resultado);
-                
-                if ($senha === $dados_usuario['senha']) {
-                    $_SESSION['usuario_id'] = $dados_usuario['id'];
-                    $_SESSION['usuario_nome'] = $dados_usuario['usuario'];
-                    $_SESSION['logado'] = true;
-                    
-                    header('Location: index.html');
-                    exit();
-                } else {
-                    $erro = 'Senha incorreta';
-                }
-            } else {
-                $erro = 'Usuário não encontrado';
-            }
-            
-            mysqli_stmt_close($stmt);
-        } else {
-            $erro = 'Erro no processamento do login';
-        }
-    }
-}
-?>
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - FinOrganizer</title>
+    <title>FINORGANIZER - Sistema de Gerenciamento Financeiro</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-    <div class="login-container">
-        <div class="login-header">
-            <h1>FinOrganizer</h1>
-            <p>Faça login para acessar o sistema</p>
+    <header>
+        <h2>Dashboard</h2>
+    </header>
+
+    <main>
+        <div class="categorias">
+            <div class="saldo">
+                <p>Saldo atual</p>
+                <h3 id="saldoTotal">Carregando...</h3>
+            </div>
+
+            <div class="receitas">
+                <p>Receitas</p>
+                <h3 id="totalReceitas">Carregando...</h3>
+            </div>
+
+            <div class="despesas">
+                <p>Despesas</p>
+                <h3 id="totalDespesas">Carregando...</h3>
+            </div>
         </div>
-        
-        <?php if (!empty($erro)): ?>
-            <div class="error-message">
-                <?php echo htmlspecialchars($erro); ?>
-            </div>
-        <?php endif; ?>
-        
-        <form method="POST" action="" class="login-form">
-            <div class="form-group">
-                <label for="user">Usuário</label>
-                <input type="text" id="user" name="user" required 
-                       placeholder="Digite seu usuário"
-                       value="<?php echo isset($_POST['user']) ? htmlspecialchars($_POST['user']) : ''; ?>">
-            </div>
-            
-            <div class="form-group">
-                <label for="pass">Senha</label>
-                <input type="password" id="pass" name="pass" required 
-                       placeholder="Digite sua senha">
-            </div>
-            
-            <button type="submit" class="submit-btn">
-                Entrar
-            </button>
-        </form>
-        
-        <div class="login-footer">
-            <p>Sistema de Gestão Financeira</p>
+
+        <div class="grafico-container">
+            <canvas id="graficoReceitasDespesas"></canvas>
         </div>
+    </main>
+
+    <div class="imagem_dinheiro">
+        <img src="https://cdn-icons-png.flaticon.com/512/7630/7630510.png">
     </div>
+
+    <div class="sidenav">
+        <form action="./adicionar_receita.php">
+            <input type="image" src="https://img.icons8.com/ios_filled/512/228BE6/plus.png" width="40">
+        </form>
+
+        <form action="./adicionar_despesa.php">
+            <input type="image" src="https://cdn-icons-png.freepik.com/512/9093/9093163.png" width="40">
+        </form>
+
+        <form action="./listar_despesas.php">
+            <input type="image" src="https://www.bimu.it/wp-content/uploads/2018/04/Icon_forms-1.png" width="40">
+        </form>
+
+        <form action="./listar_receitas.php">
+            <input type="image" src="https://cdn-icons-png.flaticon.com/512/11637/11637719.png" width="40">
+        </form>
+    </div>
+
+    <footer>
+        <p>FINORGANIZER - 2026</p>
+        <p><a href="https://github.com/503brain" target="_blank">GitHub</a></p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
