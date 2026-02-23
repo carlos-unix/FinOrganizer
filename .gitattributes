@@ -1,7 +1,5 @@
-# Forçar PHP como linguagem principal
 *.php linguist-language=PHP
 
-# Ignorar Hack se o GitHub estiver detectando
 *.hh linguist-detectable=false
 *.hack linguist-detectable=false
 *.hhi linguist-detectable=false
